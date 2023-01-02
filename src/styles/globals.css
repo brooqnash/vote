@@ -48,4 +48,7 @@ body {
   .MatchImg {
     @apply h-96 w-96;
   }
+  .MatchBtn {
+    @apply rounded p-4 font-bold hover:bg-Black hover:text-White hover:outline;
+  }
 }

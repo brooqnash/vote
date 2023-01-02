@@ -1,23 +1,13 @@
-import {
-  type NextPage,
-  type GetServerSideProps,
-  InferGetServerSidePropsType,
-} from "next";
+import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import useMatch from "../hooks/useMatch";
 
-const Home: NextPage = ({
-  data,
-}: InferGetServerSidePropsType<GetServerSideProps>) => {
+const Home: NextPage = () => {
   return (
     <>
       <Head>
         <title>Introduction</title>
-        <meta
-          name="description"
-          content="Vote for the best dog along with the rest of the world."
-        />
+        <meta name="description" content="Vote for the best dog." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -32,20 +22,12 @@ const Home: NextPage = ({
             <button className="IndexBtn bg-White text-Black">LET'S GO</button>
           </Link>
           <Link href="/results">
-            <button className="IndexBtn border border-White bg-Black">
-              SEE ALL
-            </button>
+            <button className="IndexBtn bg-Black outline">SEE ALL</button>
           </Link>
         </div>
       </main>
     </>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  const data = await useMatch();
-
-  return { props: { data } };
 };
 
 export default Home;
