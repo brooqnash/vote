@@ -41,4 +41,11 @@ body {
   .IndexBtn {
     @apply rounded p-4 font-bold;
   }
+
+  .Match {
+    @apply flex h-screen items-center justify-center gap-12;
+  }
+  .MatchImg {
+    @apply h-96 w-96;
+  }
 }

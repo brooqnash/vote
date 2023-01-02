@@ -1,8 +1,15 @@
-import { type NextPage } from "next";
+import {
+  type NextPage,
+  type GetServerSideProps,
+  InferGetServerSidePropsType,
+} from "next";
 import Head from "next/head";
 import Link from "next/link";
+import useMatch from "../hooks/useMatch";
 
-const Home: NextPage = () => {
+const Home: NextPage = ({
+  data,
+}: InferGetServerSidePropsType<GetServerSideProps>) => {
   return (
     <>
       <Head>
@@ -13,6 +20,7 @@ const Home: NextPage = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <main className="Index">
         <h1>
           Each <span className="font-extrabold">'match'</span> will display two
@@ -20,7 +28,7 @@ const Home: NextPage = () => {
         </h1>
         <h1>It is your job to choose the best of the two.</h1>
         <div className="flex gap-4">
-          <Link href="/">
+          <Link href="/match">
             <button className="IndexBtn bg-White text-Black">LET'S GO</button>
           </Link>
           <Link href="/results">
@@ -32,6 +40,12 @@ const Home: NextPage = () => {
       </main>
     </>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const data = await useMatch();
+
+  return { props: { data } };
 };
 
 export default Home;
