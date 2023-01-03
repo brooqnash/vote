@@ -20,6 +20,9 @@ export const dogRouter = router({
     .query(async ({ input, ctx }) => {
       return ctx.prisma.dog.findUnique({ where: { id: input.id } });
     }),
+  all: publicProcedure.query(async ({ ctx }) => {
+    return ctx.prisma.dog.findMany();
+  }),
   increment: publicProcedure
     .input(z.object({ id: z.string() }))
     .mutation(async ({ input, ctx }) => {

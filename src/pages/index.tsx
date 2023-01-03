@@ -21,7 +21,7 @@ const Home: NextPage = () => {
           <Link href="/match">
             <button className="IndexBtn bg-White text-Black">LET'S GO</button>
           </Link>
-          <Link href="/results">
+          <Link href="/leaderboard">
             <button className="IndexBtn bg-Black outline">SEE ALL</button>
           </Link>
         </div>

@@ -46,7 +46,9 @@ const Match: NextPage = ({
   return (
     <>
       <Head>
-        <title>Match</title>
+        <title>
+          Match | {data.dogBreeds[0]} - {data.dogBreeds[1]}
+        </title>
         <meta name="description" content="Match-up between two dogs." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
