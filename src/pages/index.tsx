@@ -12,17 +12,19 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="Index">
-        <h1>
-          Each <span className="font-extrabold">'match'</span> will display two
-          random images of a dog to you.
+        <h1 className="text-2xl">
+          Each <span className="font-extrabold uppercase">'match'</span> will
+          display two random images of a dog to you.
         </h1>
-        <h1>It is your job to choose the best of the two.</h1>
+        <h1 className="text-2xl">
+          It is your job to choose the best of the two.
+        </h1>
         <div className="flex gap-4">
           <Link href="/match">
-            <button className="IndexBtn bg-White text-Black">LET'S GO</button>
+            <button className="IndexBtn">!START!</button>
           </Link>
           <Link href="/leaderboard">
-            <button className="IndexBtn bg-Black outline">SEE ALL</button>
+            <button className="IndexBtn">RESULTS</button>
           </Link>
         </div>
       </main>

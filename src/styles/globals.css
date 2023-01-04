@@ -12,26 +12,9 @@
 }
 
 body {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #000000;
   font-family: "JetBrains Mono", sans-serif;
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #aaaaaa15;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #aaaaaa25;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #0b9e8a35;
 }
 
 @layer components {
@@ -39,16 +22,19 @@ body {
     @apply flex h-screen flex-col items-center justify-center gap-12;
   }
   .IndexBtn {
-    @apply rounded p-4 font-bold;
+    @apply rounded p-4 font-bold outline hover:bg-Black hover:text-White;
   }
 
   .Match {
     @apply flex h-screen items-center justify-center gap-12;
   }
+  .MatchBreed {
+    @apply text-xl capitalize;
+  }
   .MatchImg {
-    @apply h-96 w-96;
+    @apply h-96 w-96 rounded outline;
   }
   .MatchBtn {
-    @apply rounded p-4 font-bold hover:bg-Black hover:text-White hover:outline;
+    @apply rounded p-4 font-bold outline hover:bg-Black hover:text-White;
   }
 }

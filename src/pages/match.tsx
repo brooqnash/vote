@@ -54,8 +54,11 @@ const Match: NextPage = ({
       </Head>
 
       <main className="Match">
+        <h1 className="absolute top-20 text-4xl font-extrabold uppercase">
+          🐶 Which dog do you prefer? 🐶
+        </h1>
         <section className="flex flex-col items-center justify-center gap-8">
-          <h1>{data.dogBreeds[0]}</h1>
+          <h1 className="MatchBreed">{data.dogBreeds[0]}</h1>
           <img src={data.dogUrls[0]} className="MatchImg" />
           <button
             onClick={() =>
@@ -70,9 +73,9 @@ const Match: NextPage = ({
             This One!
           </button>
         </section>
-        <p>VS</p>
+        <p className="text-4xl font-extrabold">VS</p>
         <section className="flex flex-col items-center justify-center gap-8">
-          <h1>{data.dogBreeds[1]}</h1>
+          <h1 className="MatchBreed">{data.dogBreeds[1]}</h1>
           <img src={data.dogUrls[1]} className="MatchImg" />
           <button
             onClick={() =>
