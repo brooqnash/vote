@@ -32,9 +32,6 @@ body {
     @apply text-xl capitalize;
   }
   .MatchImg {
-    @apply h-96 w-96 rounded outline;
-  }
-  .MatchBtn {
-    @apply rounded p-4 font-bold outline hover:bg-Black hover:text-White;
+    @apply h-96 w-96 cursor-pointer rounded outline hover:scale-105;
   }
 }

@@ -59,8 +59,8 @@ const Match: NextPage = ({
         </h1>
         <section className="flex flex-col items-center justify-center gap-8">
           <h1 className="MatchBreed">{data.dogBreeds[0]}</h1>
-          <img src={data.dogUrls[0]} className="MatchImg" />
-          <button
+          <img
+            src={data.dogUrls[0]}
             onClick={() =>
               handleChoice({
                 id: data.dogIds[0],
@@ -68,16 +68,14 @@ const Match: NextPage = ({
                 url: data.dogUrls[0],
               })
             }
-            className="MatchBtn bg-White text-Black"
-          >
-            This One!
-          </button>
+            className="MatchImg"
+          />
         </section>
         <p className="text-4xl font-extrabold">VS</p>
         <section className="flex flex-col items-center justify-center gap-8">
           <h1 className="MatchBreed">{data.dogBreeds[1]}</h1>
-          <img src={data.dogUrls[1]} className="MatchImg" />
-          <button
+          <img
+            src={data.dogUrls[1]}
             onClick={() =>
               handleChoice({
                 id: data.dogIds[1],
@@ -85,10 +83,8 @@ const Match: NextPage = ({
                 url: data.dogUrls[1],
               })
             }
-            className="MatchBtn bg-White text-Black"
-          >
-            This One!
-          </button>
+            className="MatchImg"
+          />
         </section>
       </main>
     </>

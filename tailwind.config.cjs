@@ -13,4 +13,7 @@ module.exports = {
       Blue: "#76B7C7",
     },
   },
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
 };
