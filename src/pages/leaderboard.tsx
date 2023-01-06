@@ -11,6 +11,10 @@ const Leaderboard: NextPage = () => {
       sorting === "↑ ↓" ? b.votes - a.votes : a.votes - b.votes
     );
 
+  const truncateBreed = (str: string, count: number) => {
+    return str.length > count ? str.slice(0, count - 1) + "..." : str;
+  };
+
   return (
     <>
       <Head>
@@ -19,30 +23,26 @@ const Leaderboard: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-col items-center justify-center gap-12">
-        <section className="flex h-24 w-1/2 items-center justify-evenly">
-          <h1 className="text-4xl font-extrabold">🏆 Leaderboard 🏆</h1>
-          <div className="flex items-center justify-center gap-4">
-            <p>Sort by: </p>
-            <button
-              onClick={() => setSorting(sorting === "↑ ↓" ? "↓ ↑" : "↑ ↓")}
-              className="IndexBtn"
-            >
-              {sorting}
-            </button>
-          </div>
-        </section>
-        <ul className="flex w-full flex-col items-center justify-center gap-12">
-          {!data && <h1 className="flex justify-center">Loading...</h1>}
+      <main className="Leaderboard">
+        <button
+          onClick={() => setSorting(sorting === "↑ ↓" ? "↓ ↑" : "↑ ↓")}
+          className="LeaderboardBtn"
+        >
+          Sorted: {sorting}
+        </button>
+        <ul className="LeaderboardList">
+          {!data && <h1>Loading...</h1>}
           {data?.map((dog) => {
             return (
-              <li
-                key={dog.id}
-                className="flex w-1/2 items-center justify-evenly"
-              >
-                <img src={dog.url} className="h-44 w-44 object-cover" />
-                <h1 className="w-24 text-center">{dog.breed}</h1>
-                <h1 className="w-24 text-2xl font-extrabold">{dog.votes}</h1>
+              <li key={dog.id} className="LeaderboardItem">
+                <img src={dog.url} className="LeaderboardImg" />
+                <div className="LeaderboardImgCaption">
+                  <span>🐶</span>
+                  <p className="LeaderboardImgCaptionTitle">
+                    {truncateBreed(dog.breed, 7)} | {dog.votes}
+                  </p>
+                  <span>🐶</span>
+                </div>
               </li>
             );
           })}

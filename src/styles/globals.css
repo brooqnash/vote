@@ -2,36 +2,78 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: JetBrains Mono;
-  src: url("https://fonts.cdnfonts.com/css/jetbrains-mono");
-}
-
 * {
   transition: 0.05s all;
 }
 
 body {
-  background-color: #ffffff;
-  color: #000000;
-  font-family: "JetBrains Mono", sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: system-ui, sans-serif;
 }
 
 @layer components {
-  .Index {
+  .Btn {
+    @apply flex h-12 items-center justify-center rounded-lg bg-Primary px-6 hover:brightness-75;
+  }
+  .CaptionTitle {
+    @apply text-center font-mono text-base font-semibold capitalize md:text-2xl;
+  }
+  .ImgCaption {
+    @apply absolute bottom-0 flex h-12 w-full items-center justify-between bg-Secondary bg-opacity-70 px-6;
+  }
+
+  .Home {
     @apply flex h-screen flex-col items-center justify-center gap-12;
   }
-  .IndexBtn {
-    @apply rounded p-4 font-bold outline hover:bg-Black hover:text-White;
+  .HomeTitleGroup {
+    @apply flex w-2/3 flex-col gap-12;
+  }
+  .HomeTitle {
+    @apply text-center text-4xl font-extrabold sm:text-5xl lg:text-6xl;
+  }
+  .HomeBtnGroup {
+    @apply flex w-2/3 flex-wrap items-center justify-center gap-12;
+  }
+  .HomeMatchBtn {
+    @apply Btn;
+  }
+  .HomeLeaderboardBtn {
+    @apply Btn bg-Secondary;
   }
 
   .Match {
-    @apply flex h-screen items-center justify-center gap-12;
-  }
-  .MatchBreed {
-    @apply text-xl capitalize;
+    @apply flex h-screen flex-col items-center justify-center gap-12 py-12 md:flex-row;
   }
   .MatchImg {
-    @apply h-96 w-96 cursor-pointer rounded outline hover:scale-105;
+    @apply h-72 w-72 cursor-pointer rounded object-cover md:h-96 md:w-96;
+  }
+  .MatchImgCaption {
+    @apply ImgCaption;
+  }
+  .MatchImgCaptionTitle {
+    @apply CaptionTitle;
+  }
+
+  .Leaderboard {
+    @apply flex flex-col items-center justify-center gap-12 py-12;
+  }
+  .LeaderboardBtn {
+    @apply Btn;
+  }
+  .LeaderboardList {
+    @apply flex flex-col gap-12;
+  }
+  .LeaderboardItem {
+    @apply relative;
+  }
+  .LeaderboardImg {
+    @apply h-72 w-72 rounded object-cover md:h-96 md:w-96;
+  }
+  .LeaderboardImgCaption {
+    @apply ImgCaption;
+  }
+  .LeaderboardImgCaptionTitle {
+    @apply CaptionTitle;
   }
 }

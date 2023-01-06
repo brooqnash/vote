@@ -11,22 +11,20 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="Index">
-        <h1 className="text-2xl">
-          Each <span className="font-extrabold uppercase">'match'</span> will
-          display two random images of a dog to you.
-        </h1>
-        <h1 className="text-2xl">
-          It is your job to choose the best of the two.
-        </h1>
-        <div className="flex gap-4">
+      <main className="Home">
+        <section className="HomeTitleGroup">
+          <h1 className="HomeTitle">
+            Find The Cutest Dog Along With The Rest Of The World.
+          </h1>
+        </section>
+        <section className="HomeBtnGroup">
           <Link href="/match">
-            <button className="IndexBtn">!START!</button>
+            <button className="HomeMatchBtn">Get Started →</button>
           </Link>
           <Link href="/leaderboard">
-            <button className="IndexBtn">RESULTS</button>
+            <button className="HomeLeaderboardBtn">Leaderboard</button>
           </Link>
-        </div>
+        </section>
       </main>
     </>
   );

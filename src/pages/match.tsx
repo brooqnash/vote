@@ -46,19 +46,13 @@ const Match: NextPage = ({
   return (
     <>
       <Head>
-        <title>
-          Match | {data.dogBreeds[0]} - {data.dogBreeds[1]}
-        </title>
+        <title>Match</title>
         <meta name="description" content="Match-up between two dogs." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className="Match">
-        <h1 className="absolute top-20 text-4xl font-extrabold uppercase">
-          🐶 Which dog do you prefer? 🐶
-        </h1>
-        <section className="flex flex-col items-center justify-center gap-8">
-          <h1 className="MatchBreed">{data.dogBreeds[0]}</h1>
+        <div className="relative">
           <img
             src={data.dogUrls[0]}
             onClick={() =>
@@ -70,10 +64,13 @@ const Match: NextPage = ({
             }
             className="MatchImg"
           />
-        </section>
-        <p className="text-4xl font-extrabold">VS</p>
-        <section className="flex flex-col items-center justify-center gap-8">
-          <h1 className="MatchBreed">{data.dogBreeds[1]}</h1>
+          <div className="MatchImgCaption">
+            <span>🐶</span>
+            <p className="MatchImgCaptionTitle">{data.dogBreeds[0]}</p>
+            <span>🐶</span>
+          </div>
+        </div>
+        <div className="relative">
           <img
             src={data.dogUrls[1]}
             onClick={() =>
@@ -85,7 +82,12 @@ const Match: NextPage = ({
             }
             className="MatchImg"
           />
-        </section>
+          <div className="MatchImgCaption">
+            <span>🐶</span>
+            <p className="MatchImgCaptionTitle">{data.dogBreeds[1]}</p>
+            <span>🐶</span>
+          </div>
+        </div>
       </main>
     </>
   );
