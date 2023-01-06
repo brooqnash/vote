@@ -1,5 +1,5 @@
 const findMatch = async () => {
-  const req = await fetch("http://localhost:3000/api/dogs");
+  const req = await fetch(`http://${process.env.VERCEL_URL}/api/dogs`);
   const res = await req.json();
 
   const dogIds: Array<string> = [];
