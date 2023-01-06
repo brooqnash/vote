@@ -6,8 +6,9 @@ import {
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { trpc } from "../utils/trpc";
-import useMatch from "../hooks/useMatch";
+import findMatch from "../utils/findMatch";
 import Head from "next/head";
+import Image from "next/image";
 
 type Dog = {
   id: string;
@@ -53,7 +54,8 @@ const Match: NextPage = ({
 
       <main className="Match">
         <div className="relative">
-          <img
+          <Image
+            alt="Dog Image"
             src={data.dogUrls[0]}
             onClick={() =>
               handleChoice({
@@ -62,6 +64,8 @@ const Match: NextPage = ({
                 url: data.dogUrls[0],
               })
             }
+            width="1000"
+            height="1000"
             className="MatchImg"
           />
           <div className="MatchImgCaption">
@@ -71,7 +75,8 @@ const Match: NextPage = ({
           </div>
         </div>
         <div className="relative">
-          <img
+          <Image
+            alt="Dog Image"
             src={data.dogUrls[1]}
             onClick={() =>
               handleChoice({
@@ -80,6 +85,8 @@ const Match: NextPage = ({
                 url: data.dogUrls[1],
               })
             }
+            width="1000"
+            height="1000"
             className="MatchImg"
           />
           <div className="MatchImgCaption">
@@ -94,7 +101,7 @@ const Match: NextPage = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const data = await useMatch();
+  const data = await findMatch();
   return { props: { data } };
 };
 

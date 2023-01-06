@@ -1,10 +1,10 @@
-const useMatch = async () => {
+const findMatch = async () => {
   const req = await fetch("http://localhost:3000/api/dogs");
   const res = await req.json();
 
-  let dogIds: Array<string> = [];
-  let dogBreeds: Array<string> = [];
-  let dogUrls: Array<string> = [];
+  const dogIds: Array<string> = [];
+  const dogBreeds: Array<string> = [];
+  const dogUrls: Array<string> = [];
 
   res.map((url: string) => {
     dogIds.push(url.split("/").at(-1)!.slice(0, -4));
@@ -15,4 +15,4 @@ const useMatch = async () => {
   return { dogIds, dogBreeds, dogUrls };
 };
 
-export default useMatch;
+export default findMatch;

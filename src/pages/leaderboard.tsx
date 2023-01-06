@@ -1,7 +1,8 @@
 import { type NextPage } from "next";
 import { trpc } from "../utils/trpc";
-import Head from "next/head";
 import { useState } from "react";
+import Head from "next/head";
+import Image from "next/image";
 
 const Leaderboard: NextPage = () => {
   const [sorting, setSorting] = useState<string>("↑ ↓");
@@ -35,7 +36,13 @@ const Leaderboard: NextPage = () => {
           {data?.map((dog) => {
             return (
               <li key={dog.id} className="LeaderboardItem">
-                <img src={dog.url} className="LeaderboardImg" />
+                <Image
+                  alt="Dog Image"
+                  src={dog.url}
+                  width="1000"
+                  height="1000"
+                  className="LeaderboardImg"
+                />
                 <div className="LeaderboardImgCaption">
                   <span>🐶</span>
                   <p className="LeaderboardImgCaptionTitle">
