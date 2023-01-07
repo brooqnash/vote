@@ -2,7 +2,7 @@ import { type tDoubleDog } from "./tDog";
 
 const findMatch = async () => {
   const req = await fetch(
-    `http://${process.env.VERCEL_URL || "localhost:3000"}/api/dogs`
+    `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/dogs`
   );
   const res = await req.json();
 
