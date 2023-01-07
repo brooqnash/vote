@@ -1,40 +1,35 @@
-import {
-  GetServerSideProps,
-  InferGetServerSidePropsType,
-  type NextPage,
-} from "next";
+import { type NextPage } from "next";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { trpc } from "../utils/trpc";
+import { type tSingleDog, type tDoubleDog } from "../utils/tDog";
 import findMatch from "../utils/findMatch";
 import Head from "next/head";
 import Image from "next/image";
 
-type Dog = {
-  id: string;
-  breed: string;
-  url: string;
-};
-
-const Match: NextPage = ({
-  data,
-}: InferGetServerSidePropsType<GetServerSideProps>) => {
+const Match: NextPage = () => {
   const router = useRouter();
-  const [chosenDog, setChosenDog] = useState<Dog>({
+  const [data, setData] = useState<tDoubleDog>();
+  const [chosenDog, setChosenDog] = useState<tSingleDog>({
     id: "",
     breed: "",
     url: "",
   });
-
   const createDog = trpc.dog.create.useMutation();
   const incrementDog = trpc.dog.increment.useMutation();
-
   const findDog = trpc.dog.find.useQuery(
     { id: chosenDog.id },
     { refetchOnWindowFocus: false, enabled: false }
   );
 
-  const handleChoice = async ({ id, breed, url }: Dog) => {
+  useEffect(() => {
+    (async () => {
+      const req = await findMatch();
+      setData(req);
+    })();
+  }, []);
+
+  const handleChoice = async ({ id, breed, url }: tSingleDog) => {
     setChosenDog({ id, breed, url });
     if ((await findDog.refetch()).data) {
       await incrementDog.mutateAsync({ id });
@@ -44,6 +39,7 @@ const Match: NextPage = ({
     router.replace(router.asPath);
   };
 
+  if (!data) return <h1 className="Match">Loading...</h1>;
   return (
     <>
       <Head>
@@ -56,53 +52,50 @@ const Match: NextPage = ({
         <div className="relative">
           <Image
             alt="Dog Image"
-            src={data.dogUrls[0]}
+            src={data.urls[0]!}
             onClick={() =>
               handleChoice({
-                id: data.dogIds[0],
-                breed: data.dogBreeds[0],
-                url: data.dogUrls[0],
+                id: data.ids[0]!,
+                breed: data.breeds[0]!,
+                url: data.urls[0]!,
               })
             }
             width="1000"
             height="1000"
+            priority
             className="MatchImg"
           />
           <div className="MatchImgCaption">
             <span>🐶</span>
-            <p className="MatchImgCaptionTitle">{data.dogBreeds[0]}</p>
+            <p className="MatchImgCaptionTitle">{data.breeds[0]}</p>
             <span>🐶</span>
           </div>
         </div>
         <div className="relative">
           <Image
             alt="Dog Image"
-            src={data.dogUrls[1]}
+            src={data.urls[1]!}
             onClick={() =>
               handleChoice({
-                id: data.dogIds[1],
-                breed: data.dogBreeds[1],
-                url: data.dogUrls[1],
+                id: data.ids[1]!,
+                breed: data.breeds[1]!,
+                url: data.urls[1]!,
               })
             }
             width="1000"
             height="1000"
+            priority
             className="MatchImg"
           />
           <div className="MatchImgCaption">
             <span>🐶</span>
-            <p className="MatchImgCaptionTitle">{data.dogBreeds[1]}</p>
+            <p className="MatchImgCaptionTitle">{data.breeds[1]}</p>
             <span>🐶</span>
           </div>
         </div>
       </main>
     </>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  const data = await findMatch();
-  return { props: { data } };
 };
 
 export default Match;

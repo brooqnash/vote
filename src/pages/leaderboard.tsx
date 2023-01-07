@@ -1,6 +1,7 @@
 import { type NextPage } from "next";
 import { trpc } from "../utils/trpc";
 import { useState } from "react";
+import { truncateString } from "../utils/truncateString";
 import Head from "next/head";
 import Image from "next/image";
 
@@ -11,10 +12,6 @@ const Leaderboard: NextPage = () => {
     .data?.sort((a, b) =>
       sorting === "↑ ↓" ? b.votes - a.votes : a.votes - b.votes
     );
-
-  const truncateBreed = (str: string, count: number) => {
-    return str.length > count ? str.slice(0, count - 1) + "..." : str;
-  };
 
   return (
     <>
@@ -46,7 +43,7 @@ const Leaderboard: NextPage = () => {
                 <div className="LeaderboardImgCaption">
                   <span>🐶</span>
                   <p className="LeaderboardImgCaptionTitle">
-                    {truncateBreed(dog.breed, 7)} | {dog.votes}
+                    {truncateString(dog.breed, 7)} | {dog.votes}
                   </p>
                   <span>🐶</span>
                 </div>

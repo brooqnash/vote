@@ -3,6 +3,31 @@
   <p align="center"><i>An application for users to poll between the best image.</i></p>
 </div>
 
+## **Usage**
+
+If you wish to see this website live, please head over to the [live site](https://vote-dun.vercel.app/).
+
+Or if you wish to clone this and use it yourself.
+
+```bash
+cd vote
+npm install
+```
+
+For this clone, you will need a database up and running, like Docker or using a service e.g. [Planetscale](https://planetscale.com/)
+
+Then, sync up your database and your prisma schema.
+
+```bash
+npx prisma db push
+```
+
+Finally, create a migration.
+
+```bash
+npx prisma migrate dev --name init
+```
+
 ## **Tools**
 
 [![NextJS][nextjs]][nextjs-url] <br>
@@ -15,6 +40,8 @@
 
 - [Create T3 App](https://create.t3.gg/)
   - A bootstrap package for full-stack type safety.
+- [Planetscale](https://planetscale.com/)
+  - A service that will host and manage a MySQL database.
 
 <p align="center">Made with ❤️ by Brook Nash.</p>
 

@@ -46,7 +46,7 @@ body {
     @apply flex h-screen flex-col items-center justify-center gap-12 py-12 md:flex-row;
   }
   .MatchImg {
-    @apply h-72 w-72 cursor-pointer rounded object-cover md:h-96 md:w-96;
+    @apply h-72 w-72 cursor-pointer rounded object-cover hover:outline hover:outline-Primary md:h-96 md:w-96;
   }
   .MatchImgCaption {
     @apply ImgCaption;
